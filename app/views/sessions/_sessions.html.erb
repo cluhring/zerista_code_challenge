@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="left-side col-md-8">
+    <div class="panel-heading">
+      <table class="table">
+        <thead>
+          <tr class="headers">
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Session Title</th>
+            <th>Tracks</th>
+          </tr>
+        </thead>
+        <tbody class="all-sessions">
+          <% @sessions.each do |session| %>
+            <tr class="SESSIONS">
+              <td class="start_time"><%= session.start_time %></td>
+              <td class="end_time"><%= session.end_time %></td>
+              <td class="title"><%= link_to session.name, session_path(session), class: 'session_title', id: "session_#{session.name}" %></td>
+              <td class="tracks">
+                <% session.tracks.each do |track| %>
+                <%= track.track_name %>
+                <% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="tracks col-md-2">
+     All Tracks:
+    <% if @tracks && @tracks.count > 0 %>
+      <div class="text-center btn-group">
+        <div class="col-sm-12" id="btn-tracks">
+          <div class="btn btn-default track-btn" id="show-all">Show All Tracks</div>
+        <% @tracks.each do |track| %>
+          <div class="btn btn-default track-btn" id="<%= track.track_name %>"><%= track.track_name %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

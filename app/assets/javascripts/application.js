@@ -12,5 +12,28 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+
+  function showBySearchTerm(listLinks, searchMatch){
+    listLinks.each(function (index, element){
+    debugger;
+      if($(element.children).text().match(searchMatch)) {
+        $(element).show();
+      } else {
+        $(element).hide();
+      }
+    });
+  }
+
+  $('.track-btn').click(function(){
+    var filteringBy = $(this).attr('id')
+    var $listingLinks = $('.all-sessions .SESSIONS')
+    showBySearchTerm($listingLinks, filteringBy);
+  });
+
+  $("#show-all").click(function(){
+    $('.all-sessions .SESSIONS').show()
+  });
+});

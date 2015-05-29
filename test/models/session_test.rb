@@ -6,8 +6,8 @@ class SessionTest < ActiveSupport::TestCase
     @sessionA = Session.create(start: "12/8/2015 16:30",
                                finish: "12/9/2015 10:00",
                                name: "T2P3OR5a Clustering")
-    @trackA = Track.create(name: "Track A")
-    @trackB = Track.create(name: "Track B")
+    @trackA = Track.create(track_name: "Track A")
+    @trackB = Track.create(track_name: "Track B")
     SessionTrack.create(session_id: sessionA.id, track_id: trackA.id)
     SessionTrack.create(session_id: sessionA.id, track_id: trackB.id)
   end
@@ -19,7 +19,7 @@ class SessionTest < ActiveSupport::TestCase
 
   def test_session_has_many_tracks
     assert_equal 2, sessionA.tracks.count
-    assert_equal "Track A", sessionA.tracks.first.name
+    assert_equal "Track A", sessionA.tracks.first.track_name
   end
 
   def test_session_has_many_session_tracks
@@ -27,8 +27,8 @@ class SessionTest < ActiveSupport::TestCase
   end
 
   def test_start_and_end_time_strftime_methods_work
-    assert_equal "12/09/2015, 10:00 AM", sessionA.end_time
-    assert_equal "12/08/2015,  4:30 PM", sessionA.start_time
+    assert_equal "10:00AM", sessionA.end_time
+    assert_equal " 4:30PM", sessionA.start_time
   end
 
 end

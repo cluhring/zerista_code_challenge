@@ -3,8 +3,8 @@ require 'test_helper'
 class TrackTest < ActiveSupport::TestCase
   attr_reader :trackA, :trackB, :sessionA, :sessionB
   def setup
-    @trackA = Track.create(name: "Track A")
-    @trackB = Track.create(name: "Track B")
+    @trackA = Track.create(track_name: "Track A")
+    @trackB = Track.create(track_name: "Track B")
     @sessionA = Session.create(start: "12/8/2015 16:30",
                                finish: "12/9/2015 10:00",
                                name: "T2P3OR5a Clustering")
@@ -17,7 +17,7 @@ class TrackTest < ActiveSupport::TestCase
 
   def test_track_is_valid
     assert trackA.valid?
-    assert_equal "Track B", trackB.name
+    assert_equal "Track B", trackB.track_name
   end
 
   def test_track_has_many_sessions

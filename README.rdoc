@@ -3,7 +3,11 @@
 https://zerista-luhring.herokuapp.com
 
 To populate the database locally, please run the following rake commands:
+
 rake db:create
+
 rake db:migrate
+
 rake upload
+
 rake db:seed
